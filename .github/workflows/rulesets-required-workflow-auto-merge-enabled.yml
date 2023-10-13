@@ -1,0 +1,19 @@
+name: rulesets-required-workflow-auto-merge-enabled
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - sychronize
+      - ready_for_review
+      - auto_merge_enabled
+      - auto_merge_disabled
+
+jobs:
+  rulesets-required-workflow-auto-merge-enabled-job:
+    if: github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello, world!
